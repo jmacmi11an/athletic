@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import React from "react"
 import { useEffect, useState} from "react";
 import Select from 'react-select';
+import useArticlesContext from "../hooks/use-articles-context";
 import "../styles/Modal.css"
 
  const GET_TEAMS = gql`
@@ -27,6 +28,7 @@ function Modal({ onSubmit }) {
         };
     }, [])
 
+    const { resetPage } = useArticlesContext();
     const { data, loading } = useQuery(GET_TEAMS);
 
     const [teamsArray, setTeamsArray] = useState([])
@@ -58,6 +60,7 @@ function Modal({ onSubmit }) {
         const leaguesIdArray = selectedLeagues.map((league) => league.value)
         const articleIdArray = [...teamsIdArray, ...leaguesIdArray]
         onSubmit(articleIdArray)
+        resetPage()
     }
 
     return (

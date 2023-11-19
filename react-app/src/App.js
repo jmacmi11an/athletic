@@ -1,6 +1,7 @@
 import './App.css';
 import ApolloClient, {InMemoryCache} from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
+import { Provider } from './context/articles';
 import React from 'react';
 import Modal from './containers/Modal';
 import ArticleFeed from './containers/ArticleFeed';
@@ -10,6 +11,8 @@ import NavBar from './containers/NavBar';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql/',
+  // ### Seemed important in a tutorial about pagination, but haven't explored yet.
+  //
   // cache: new InMemoryCache({
   //   typePolicies: {
   //     Query: {
@@ -53,17 +56,20 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <div className='App'>
-      <NavBar onClick={handleModalClick}/>
-        {toggleModal && 
-          <Modal onSubmit={handleModalClick}/>
-        }
-        {articleId
-          ? <Article onClick={() => setArticleId('')} id={articleId}/>
-          :<ArticleFeed onClickArticle={handleArticleClick} articleIdArray={articleIdArray}/>
-        }
-        
-      </div>
+      <Provider>
+        <div className='App'>
+        <NavBar onClick={handleModalClick}/>
+          {toggleModal && 
+            <Modal onSubmit={handleModalClick}/>
+          }
+          {articleId
+            ? <Article onClick={() => setArticleId('')} id={articleId}/>
+            :<ArticleFeed onClickArticle={handleArticleClick} articleIdArray={articleIdArray}/>
+          }
+          
+        </div>
+      </Provider>
+
     </ApolloProvider>
   );
 }

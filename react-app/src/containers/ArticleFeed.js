@@ -1,7 +1,9 @@
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
-import React, { useState }from 'react';
+import React from 'react';
 import Card from './Card';
+import useArticlesContext from "../hooks/use-articles-context";
+
 import "../styles/ArticleFeed.css"
 
 const GET_ARTICLES = gql`
@@ -31,14 +33,14 @@ const PAGE_SIZE = 8;
 
 
 export default function ArticleFeed({onClickArticle, articleIdArray}) {
-  const [page, setPage] = useState(0)
+  const { page, increasePage, decreasePage } = useArticlesContext();
+
   const { data, loading } = useQuery(GET_ARTICLES, {
     variables: {
       offset: page * PAGE_SIZE,
       limit: PAGE_SIZE,
     },
   });
-  data && console.log('this is data', data)
 
   return (
     <div className="ArticleFeed">
@@ -48,9 +50,9 @@ export default function ArticleFeed({onClickArticle, articleIdArray}) {
         ) : (
           <div>
             <nav className='ArticleFeed-navigation'>
-              <button disabled={!page} onClick={() => setPage((prev) => prev -1 )}>Previous</button>
+              <button disabled={!page} onClick={decreasePage}>Previous</button>
               <span>Page {page + 1}</span>
-              <button onClick={() => setPage((prev) => prev +1 )}>Next</button>
+              <button onClick={increasePage}>Next</button>
             </nav>
               <div className='Card-container'>
                 {articleIdArray && data && data.articles
