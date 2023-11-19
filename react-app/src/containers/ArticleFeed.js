@@ -47,7 +47,7 @@ export default function ArticleFeed({onClickArticle, articleIdArray}) {
           <p>Loading</p>
         ) : (
           <div>
-            <nav>
+            <nav className='ArticleFeed-navigation'>
               <button disabled={!page} onClick={() => setPage((prev) => prev -1 )}>Previous</button>
               <span>Page {page + 1}</span>
               <button onClick={() => setPage((prev) => prev +1 )}>Next</button>

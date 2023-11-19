@@ -19,7 +19,7 @@ import "../styles/Modal.css"
     }
  `;
 
-function Modal({onSubmit, children}) {
+function Modal({ onSubmit }) {
     useEffect(() => {
         document.body.classList.add('overflow-hidden');
         return () => {
@@ -63,24 +63,25 @@ function Modal({onSubmit, children}) {
     return (
         <div className='Modal'>
             <div className='Modal-container'>
-                Select Your Favorite Teams and Leagues
-                {children}
-                <form onSubmit={handleSubmit}>
                     { loading ? (
                         <p>Loading</p>
                     ) : (   
-                        <>
-                            <div className='Select-container'>
-                                <Select onChange={(event) => setSelectedTeams(event)} closeMenuOnSelect={false} isMulti options={teamsObject}/>
-                            </div> 
-                            <div className='Select-container'>
-                                <Select onChange={(event) => setSelectedLeagues(event)} closeMenuOnSelect={false} isMulti options={leaguesObject}/>
-                            </div> 
-                        </>
+                        <div className='Modal-select-container'>
+                            <form onSubmit={handleSubmit}>
+                            <h1>Select Your Favorite Teams and Leagues</h1>
 
+                                <div className='Modal-select'>
+                                    <Select placeholder="Teams" onChange={(event) => setSelectedTeams(event)} closeMenuOnSelect={false} isMulti options={teamsObject}/>
+                                </div> 
+                                <div className='Modal-select'>
+                                    <Select placeholder="Leagues" onChange={(event) => setSelectedLeagues(event)} closeMenuOnSelect={false} isMulti options={leaguesObject}/>
+                                </div>
+                                <div  className='Modal-select'>
+                                    <button className='Modal-button'>Save</button>
+                                </div>
+                            </form>
+                        </div>
                     )}
-                    <button className='Modal-action-bar'>Save</button>
-                </form>
             </div>
         </div>
     )

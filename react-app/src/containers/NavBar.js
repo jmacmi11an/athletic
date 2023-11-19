@@ -7,8 +7,10 @@ function NavBar({onClick}) {
     return (
         <div className='NavBar'>
             <div className='NavBar-container'>
-                <div className='NavBar-header'>The Athletic</div>
-                <button className='NavBar-button' onClick={handleClick}>Follow +</button>
+                <h4 className='NavBar-header'>The Athletic</h4>
+                <div className='NavBar-button'>
+                    <button onClick={handleClick}>Follow +</button>
+                </div>
             </div>
         </div>
     )

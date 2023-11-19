@@ -19,10 +19,14 @@
     max-width: 100%;
 }
 
-.ArticleFeed-footer {
-    text-align: center;
-    border: 1px dashed gray;
-    padding: 2rem 0;
+.ArticleFeed-navigation {
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* Styles for screens smaller than 480px */

@@ -10,10 +10,14 @@
     max-width: 23%;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 .Card-image {
     max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex: 1;
 }
 
 .Card-content {
@@ -22,6 +26,7 @@
     flex-direction: column;
     align-content: space-between;
     padding-bottom: 5px;
+    flex: 2;
 }
 
 .Card-content h3 {
@@ -62,26 +67,20 @@
 
     .Card-content {
         margin-left: 10px;
+        flex: 2;
     }
 
     .Card-image{
-        max-width: 100%;
+        height: 100%;
+        width: 100%;
+        flex: 1;
+        object-fit: cover;
     } 
 }
   
   /* Styles for screens between 480px and 767px */
   @media screen and (min-width: 480px) and (max-width: 767px) {
-    .Card-container {
+    .Card {
         max-width: 48%;
-    }   }
-  
-  /* Styles for screens between 768px and 1023px */
-  /* @media screen and (min-width: 768px) and (max-width: 1023px) { */
-    /* Your styles for screens between 768px and 1023px go here */
-  /* } */
-  
-  /* Styles for screens 1024px and larger */
-  /* @media screen and (min-width: 1024px) { */
-    /* Your styles for screens 1024px and larger go here */
-  /* } */
- /* */
+    }   
+}

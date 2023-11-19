@@ -7,10 +7,10 @@ There should be two folders inside, one for a backend server and one for a front
 <!-- Done! An article page appears, has pretty neutral style, and looks alright at 3 breakpoints. -->
 1. Create a page to render the article.
 
-<!-- Partially done, I updated the schema and resolvers pages in apollo-server to handle a reverse chron query for articles. Although all listed articles have the same createdAt.--> 
+<!-- Done! Check the resolvers. I also added a slice based on an offset and limit for pagination --> 
 2. Create a query in the Apollo server that returns a reverse chronological list of articles for one or more teams and/or leagues.
 
-<!-- I have started. A Modal pops up and shows a huge list of teams right now.  Preferences are not saved.  -->
+<!-- Done! A Modal pops up, shows teams or leagues dropdowns and updates accordingly. ToDo: Style the modal  -->
 3. Create a page in the app that allows a user to select teams and/or leagues to follow, and renders a feed of articles for those teams/leagues. 
   - Note: The Teams function is merely an example of how to wire up a query, this can be discarded if not needed in your response.
 
