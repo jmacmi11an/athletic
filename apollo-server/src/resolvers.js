@@ -14,10 +14,12 @@ const resolvers = {
     async article(_root, { id }, { dataSources }) {
       return dataSources.articleDataSource.getArticle(id);
     },
-    async articles(_root, _args, { dataSources }) {
+    async articles(_root, { limit, offset }, { dataSources }) {
       const articles = await dataSources.articleDataSource.getArticles();
-      articles.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))      
-      return articles;
+      const slicedArticles = articles
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+        .slice(offset, offset + limit);  
+      return slicedArticles;
     },
     async leagues(_root, _args, { dataSources }) {
       const leagues = await dataSources.leagueDataSource.getLeagues();

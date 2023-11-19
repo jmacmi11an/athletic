@@ -1,11 +1,11 @@
 import React from "react"
 import "../styles/Card.css"
 
-function Card({img, title, author, createdAt, id, onClick}) {
+function Card({img, title, author, createdAt, id, onClickArticle}) {
     const dateString = new Date(createdAt).toString().slice(4,15);
 
     const handleClick = () => {
-        onClick(id)
+        onClickArticle(id)
     }
 
         return (

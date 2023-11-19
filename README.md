@@ -18,10 +18,12 @@ There should be two folders inside, one for a backend server and one for a front
 
 Please note the bonus tasks are not sorted in any particular order, and it’s up to you to do some (or do all/none) in whichever order you think makes sense.
 
+<!-- It's done, though far from perfect. I need to style a little. I need to handle what happens when I click next page when there is no more data. I need to handle what happens when I am on a page, open the modal, select something, and close the modal.  -->
 1. Add pagination to the article feed.
 2. Implement hot reloading for the Apollo server.
 3. Write tests for the Apollo server.
 4. Write tests for the React application.
+<!-- I think I started this, though I'm not sure how to check. -->
 5. Add caching to the Apollo server to prevent calls to the REST API on every request.
 
 Return your challenge in a shared folder with the two folders inside, do not bundle `node_modules` with either to keep the size down.
