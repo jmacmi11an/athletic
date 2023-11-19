@@ -26,26 +26,5 @@
   cursor: pointer;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
-
-/* Styles for screens smaller than 480px */
-@media screen and (max-width: 479px) {
-
-}
-  
-  /* Styles for screens between 480px and 767px */
-  @media screen and (min-width: 480px) and (max-width: 767px) {
-    /* Your styles for screens between 480px and 767px go here */
-  }
-  
-  /* Styles for screens between 768px and 1023px */
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    /* Your styles for screens between 768px and 1023px go here */
-  }
-  
-  /* Styles for screens 1024px and larger */
-  @media screen and (min-width: 1024px) {
-    /* Your styles for screens 1024px and larger go here */
-  }
-
