@@ -1,0 +1,87 @@
+.Card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.Card {
+    border: 1px solid gray;
+    margin: 10px auto;
+    max-width: 23%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Card-image {
+    max-width: 100%;
+}
+
+.Card-content {
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    padding-bottom: 5px;
+}
+
+.Card-content h3 {
+    max-height: 50%;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.Card-content h5 {
+    margin: 0 auto;
+    flex-grow: 1;
+    font-weight: 500;
+    padding-top: 6px;
+    font-size: 10px;
+}
+
+.Card-content span {
+    flex-grow: 1;
+    font-weight: 400;
+    font-size: 10px;
+}
+
+/* Styles for screens smaller than 480px */
+ @media screen and (max-width: 479px) {
+    .Card-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .Card {
+        border: 1px solid gray;
+        margin: 10px auto;
+        max-width: 100%;
+        display: flex;
+        flex-direction: row;
+    } 
+
+    .Card-content {
+        margin-left: 10px;
+    }
+
+    .Card-image{
+        max-width: 100%;
+    } 
+}
+  
+  /* Styles for screens between 480px and 767px */
+  @media screen and (min-width: 480px) and (max-width: 767px) {
+    .Card-container {
+        max-width: 48%;
+    }   }
+  
+  /* Styles for screens between 768px and 1023px */
+  /* @media screen and (min-width: 768px) and (max-width: 1023px) { */
+    /* Your styles for screens between 768px and 1023px go here */
+  /* } */
+  
+  /* Styles for screens 1024px and larger */
+  /* @media screen and (min-width: 1024px) { */
+    /* Your styles for screens 1024px and larger go here */
+  /* } */
+ /* */

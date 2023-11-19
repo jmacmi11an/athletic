@@ -25,7 +25,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ## GraphQL Client
 
-This app is pre-configured with an Apollo Client, pointing at http://localhost:4000/graphql which you ashould having running.
+This app is pre-configured with an Apollo Client, pointing at http://localhost:4000/graphql which you should having running.
 
 ## Resources
 

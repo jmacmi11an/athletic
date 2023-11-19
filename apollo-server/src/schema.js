@@ -36,6 +36,7 @@ const typeDefs = gql`
 
   type Query {
     article(id: ID!): Article
+    articles: [Article!]!
     leagues: [League!]!
     teams: [Team!]!
   }

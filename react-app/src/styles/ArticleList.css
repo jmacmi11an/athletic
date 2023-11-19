@@ -1,0 +1,47 @@
+/* Styles for default (no media query) */
+.ArticleList {
+    max-width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.ArticleList-title {
+    text-align: center;
+}
+
+.ArticleList-articles {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+    max-width: 100%;
+}
+
+.ArticleList-footer {
+    text-align: center;
+    border: 1px dashed gray;
+    padding: 2rem 0;
+}
+
+/* Styles for screens smaller than 480px */
+@media screen and (max-width: 479px) {
+
+}
+  
+  /* Styles for screens between 480px and 767px */
+  @media screen and (min-width: 480px) and (max-width: 767px) {
+    /* Your styles for screens between 480px and 767px go here */
+  }
+  
+  /* Styles for screens between 768px and 1023px */
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Your styles for screens between 768px and 1023px go here */
+  }
+  
+  /* Styles for screens 1024px and larger */
+  @media screen and (min-width: 1024px) {
+    /* Your styles for screens 1024px and larger go here */
+  }
+

@@ -14,6 +14,11 @@ const resolvers = {
     async article(_root, { id }, { dataSources }) {
       return dataSources.articleDataSource.getArticle(id);
     },
+    async articles(_root, _args, { dataSources }) {
+      const articles = await dataSources.articleDataSource.getArticles();
+      articles.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))      
+      return articles;
+    },
     async leagues(_root, _args, { dataSources }) {
       const leagues = await dataSources.leagueDataSource.getLeagues();
       leagues.sort((a, b) => a.name.localeCompare(b.name));
