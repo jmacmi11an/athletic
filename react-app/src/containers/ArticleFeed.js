@@ -31,7 +31,6 @@ const GET_ARTICLES = gql`
 
 const PAGE_SIZE = 8;
 
-
 export default function ArticleFeed({onClickArticle}) {
   const { page, increasePage, decreasePage, articleIdArray } = useArticlesContext();
 
@@ -42,7 +41,8 @@ export default function ArticleFeed({onClickArticle}) {
     },
   });
 
-  // const disableNext = data && data.articles
+  let disabled
+  if (data) disabled = (data.articles.length < PAGE_SIZE) || ((articleIdArray.length < PAGE_SIZE) && (articleIdArray.length > 0))
   return (
     <div className="ArticleFeed">
       <div className='ArticleFeed-articles'>
@@ -53,7 +53,7 @@ export default function ArticleFeed({onClickArticle}) {
             <nav className='ArticleFeed-navigation'>
               <button disabled={!page} onClick={decreasePage}>Previous</button>
               <span>Page {page + 1}</span>
-              <button onClick={increasePage}>Next</button>
+              <button disabled={disabled} onClick={increasePage}>Next</button>
             </nav>
               <div className='Card-container'>
                 {articleIdArray && data && data.articles

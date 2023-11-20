@@ -44,11 +44,8 @@ const client = new ApolloClient({
 function App() {
   const [toggleModal, setToggleModal] = useState(false);
   const [articleId, setArticleId] = useState('');
-  const [articleIdArray, setArticleIdArray] = useState([]);
 
   const handleModalToggle = () => setToggleModal(!toggleModal)
-
-  
   const handleArticleClick = (id) => setArticleId(id);
 
   return (
@@ -66,7 +63,6 @@ function App() {
           
         </div>
       </Provider>
-
     </ApolloProvider>
   );
 }
