@@ -14,15 +14,12 @@ const GET_ARTICLES = gql`
       author {
         name
       }
-      body
       createdAt
       team {
         id
-        name
       }
       league {
         id
-        name
       }
       imageUrlString
     }
@@ -43,6 +40,7 @@ export default function ArticleFeed({onClickArticle}) {
 
   let disabled
   if (data) disabled = (data.articles.length < PAGE_SIZE) || ((articleIdArray.length < PAGE_SIZE) && (articleIdArray.length > 0))
+  
   return (
     <div className="ArticleFeed">
       <div className='ArticleFeed-articles'>

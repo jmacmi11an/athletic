@@ -20,6 +20,14 @@ import "../styles/Modal.css"
     }
  `;
 
+// Helper function to convert data into React-Select required array of objects with keys of value and label
+const mapArrayOfObjects = (dataArray) => {
+    return dataArray.map((data) => ({
+        value: data.id,
+        label: data.name
+    }));
+};
+
 function Modal({onClose}) {
     const { 
         resetPage, 
@@ -32,26 +40,15 @@ function Modal({onClose}) {
 
     const { data, loading } = useQuery(GET_TEAMS);
 
-    const [teamsArray, setTeamsArray] = useState([])
-    const [leaguesArray, setLeaguesArray] = useState([]);
+    const [teamsArrayOfObjects, setTeamsArrayOfObjects] = useState([]);
+    const [leaguesArrayOfObjects, setLeaguesArrayOfObjects] = useState([]);
 
     useEffect(() => {
         if (!loading && data) {
-          setTeamsArray(data.teams);
-          setLeaguesArray(data.leagues);
+          setTeamsArrayOfObjects(mapArrayOfObjects(data.teams));
+          setLeaguesArrayOfObjects(mapArrayOfObjects(data.leagues));
         }
       }, [loading, data]);
-
-    // Helper function to convert data into React-Select required array of objects with keys of value and label
-    const mapArrayOfObjects = (dataArray) => {
-        return dataArray.map((data) => ({
-            value: data.id,
-            label: data.name
-        }));
-    };
-
-    const teamsObject = mapArrayOfObjects(teamsArray)
-    const leaguesObject = mapArrayOfObjects(leaguesArray);
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -88,10 +85,10 @@ function Modal({onClose}) {
                                 <div className='Modal-button-close' onClick={onClose}>close</div>
 
                                     <div className='Modal-select'>
-                                        <Select value={selectedTeams} placeholder="Teams" onChange={(event) => setSelectedTeams(event)} closeMenuOnSelect={false} isMulti options={teamsObject}/>
+                                        <Select value={selectedTeams} placeholder="Teams" onChange={(event) => setSelectedTeams(event)} closeMenuOnSelect={false} isMulti options={teamsArrayOfObjects}/>
                                     </div> 
                                     <div className='Modal-select'>
-                                        <Select value={selectedLeagues} placeholder="Leagues" onChange={(event) => setSelectedLeagues(event)} closeMenuOnSelect={false} isMulti options={leaguesObject}/>
+                                        <Select value={selectedLeagues} placeholder="Leagues" onChange={(event) => setSelectedLeagues(event)} closeMenuOnSelect={false} isMulti options={leaguesArrayOfObjects}/>
                                     </div>
                                     <div  className='Modal-select'>
                                         <button className='Modal-button'>Save</button>

@@ -4,9 +4,7 @@ import "../styles/Card.css"
 function Card({img, title, author, createdAt, id, onClickArticle}) {
     const dateString = new Date(createdAt).toString().slice(4,15);
 
-    const handleClick = () => {
-        onClickArticle(id)
-    }
+    const handleClick = () => onClickArticle(id)
 
         return (
         <div key={id} className='Card' onClick={handleClick}>
