@@ -46,11 +46,8 @@ function App() {
   const [articleId, setArticleId] = useState('');
   const [articleIdArray, setArticleIdArray] = useState([]);
 
-  // this is called in NavBar and Modal? 
-  const handleModalClick = (idArray) => {
-    setArticleIdArray(idArray)
-    setToggleModal(!toggleModal)
-  }
+  const handleModalToggle = () => setToggleModal(!toggleModal)
+
   
   const handleArticleClick = (id) => setArticleId(id);
 
@@ -58,13 +55,13 @@ function App() {
     <ApolloProvider client={client}>
       <Provider>
         <div className='App'>
-        <NavBar onClick={handleModalClick}/>
+        <NavBar onClick={handleModalToggle}/>
           {toggleModal && 
-            <Modal onSubmit={handleModalClick}/>
+            <Modal onClose={handleModalToggle}/>
           }
           {articleId
             ? <Article onClick={() => setArticleId('')} id={articleId}/>
-            :<ArticleFeed onClickArticle={handleArticleClick} articleIdArray={articleIdArray}/>
+            :<ArticleFeed onClickArticle={handleArticleClick}/>
           }
           
         </div>

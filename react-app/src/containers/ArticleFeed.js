@@ -32,8 +32,8 @@ const GET_ARTICLES = gql`
 const PAGE_SIZE = 8;
 
 
-export default function ArticleFeed({onClickArticle, articleIdArray}) {
-  const { page, increasePage, decreasePage } = useArticlesContext();
+export default function ArticleFeed({onClickArticle}) {
+  const { page, increasePage, decreasePage, articleIdArray } = useArticlesContext();
 
   const { data, loading } = useQuery(GET_ARTICLES, {
     variables: {
@@ -42,6 +42,7 @@ export default function ArticleFeed({onClickArticle, articleIdArray}) {
     },
   });
 
+  // const disableNext = data && data.articles
   return (
     <div className="ArticleFeed">
       <div className='ArticleFeed-articles'>
