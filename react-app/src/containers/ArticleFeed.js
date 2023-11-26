@@ -38,9 +38,28 @@ export default function ArticleFeed({onClickArticle}) {
     },
   });
 
-  let disabled
-  if (data) disabled = (data.articles.length < PAGE_SIZE) || ((articleIdArray.length < PAGE_SIZE) && (articleIdArray.length > 0))
-  
+  let content
+  if (data && articleIdArray) content = data.articles
+    .filter(article => (
+      articleIdArray.length === 0
+        ? true
+        : articleIdArray.includes(article.team.id) || articleIdArray.includes(article.league.id) // this line of code nearly killed me
+    ))
+
+    .map(article => (
+      <Card
+        key={article.id}
+        id={article.id} 
+        img={article.imageUrlString}
+        title={article.title}
+        author={article.author.name}
+        createdAt={article.createdAt}
+        onClickArticle={onClickArticle}
+      />
+    ))
+
+  if (data) console.log('data.articles.length', data.articles.length)
+  console.log('articleIdArray', articleIdArray)
   return (
     <div className="ArticleFeed">
       <div className='ArticleFeed-articles'>
@@ -51,27 +70,10 @@ export default function ArticleFeed({onClickArticle}) {
             <nav className='ArticleFeed-navigation'>
               <button disabled={!page} onClick={decreasePage}>Previous</button>
               <span>Page {page + 1}</span>
-              <button disabled={disabled} onClick={increasePage}>Next</button>
+              <button disabled={content.length < PAGE_SIZE} onClick={increasePage}>Next</button>
             </nav>
               <div className='Card-container'>
-                {articleIdArray && data && data.articles
-                  .filter(article => (
-                    articleIdArray.length === 0
-                      ? true
-                      : articleIdArray.includes(article.team.id) || articleIdArray.includes(article.league.id) // this line of code nearly killed me
-                  ))
-                  .map(article => (
-                    <Card
-                      key={article.id}
-                      id={article.id} 
-                      img={article.imageUrlString}
-                      title={article.title}
-                      author={article.author.name}
-                      createdAt={article.createdAt}
-                      onClickArticle={onClickArticle}
-                    />
-                  ))
-                }
+                {content}
               </div>
             </div>
         )}

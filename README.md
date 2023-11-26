@@ -20,7 +20,9 @@ Please note the bonus tasks are not sorted in any particular order, and it’s u
 
 <!-- Done!  -->
 1. Add pagination to the article feed.
+<!-- Done! Did it using Nodemon. -->
 2. Implement hot reloading for the Apollo server.
+
 3. Write tests for the Apollo server.
 4. Write tests for the React application.
 <!-- I think I started this, though I'm not sure how to check. -->
